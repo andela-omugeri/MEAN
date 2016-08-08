@@ -1,18 +1,19 @@
 var User = require('./models/users.js');
 
 //create a new users
-var mugeri = new User({
+var newUser = User({
   name: 'Mugeri',
-  username: 'me',
+  username: 'starLord55',
   password: 'password'
 });
 
-mugeri.dudify(function(err, name) {
+newUser.dudify(function(err, name) {
   if(err) throw err;
   console.log('Your new name is ' + name);
 });
 
-mugeri.save(function (err) {
+//save the user
+newUser.save(function (err) {
   if (err) throw err;
   console.log('User saved successfully!');
 });

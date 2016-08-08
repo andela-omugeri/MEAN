@@ -29,6 +29,20 @@ userSchema.methods.dudify =  function () {
   return this.name;
 };
 
+//on every save add the Date
+userSchema.pre('save', function(next) {
+  //get the current Date
+  var currentDate = new Date();
+
+  //change the updated_at to the current Date
+  this.updated_at = currentDate;
+
+  if(!this.created_at)
+    this.created_at = currentDate;
+
+  next();
+});
+
 //create a model using the schema
 var User =  mongoose.model('User', userSchema);
 
